@@ -135,6 +135,7 @@ public class SQLConnection{
 			while(result.next())
 			{
 				System.out.println(result.absolute(a));
+				a++;
 			}
 		}
 		if(ans.equals("delete") == true || ans.equals("delete table") == true)
