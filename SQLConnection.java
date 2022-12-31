@@ -129,16 +129,12 @@ public class SQLConnection{
 			input2 = new Scanner(System.in);
 			answer = input2.nextLine();
 	
-			ResultSet[] result;
+			ResultSet result;
+			result = database.executeQuery("SELECT " + firstSQL + " FROM " + table + " WHERE " + secondSQL + " = " + answer);
 			int a = 0;
-			while(result[a] != null)
+			while(result.next())
 			{
-				result[a] = database.executeQuery("SELECT " + firstSQL + " FROM " + table + " WHERE " + secondSQL + " = " + answer);
-				a++;
-			}
-			for(int i = 0; i < a; i++)
-			{
-				System.out.println(result[i]);
+				System.out.println(result.absolute(a));
 			}
 		}
 		if(ans.equals("delete") == true || ans.equals("delete table") == true)
