@@ -105,8 +105,7 @@ public class SQLConnection{
 		INSERT INTO Twitter (FirstName, UserName, Location, Bio, StartDate)
 		VALUES ('Brad', 'bradhullinger', 'Denver', 'Ilovetosnowboardandplaythedrumsandprogramcomputers', '01012023');
 		**/
-		database.executeUpdate("INSERT INTO " + table + " (" + row1 + ", " row2 + ", " + row3 + ", " + row4 + ", " + row5 + ") values (" + name + ", " + account + ", " + location + ", " + bio + ", " + date + ")");
-
+		database.executeUpdate("INSERT INTO " + table + " (" + row1 + ", " row2 + ", " + row3 + ", " + row4 + ", " + row5 + ") values (" + "'" + name + "'" + ", " + "'" + account + "'" + ", " + "'" + location + "'" + ", " + "'" + bio + "'" + ", " + "'" + date + "'" + ")");
 			
 		}
 		if(ans.equals("Search") == true || ans.equals("search") == true)
