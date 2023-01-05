@@ -124,7 +124,7 @@ public class SQLConnection{
 			table = input1.nextLine();
 			System.out.println("WHERE...");
 			input2 = new Scanner(System.in);
-			String secondSQL = input2.nextLine();
+			secondSQL = input2.nextLine();
 			System.out.println("=");
 			input2 = new Scanner(System.in);
 			answer = input2.nextLine();
