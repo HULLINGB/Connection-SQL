@@ -138,7 +138,7 @@ public class SQLConnection{
 				a++;
 			}
 		}
-		if(ans.equals("delete") == true || ans.equals("delete table") == true)
+		if(ans.equals("delete") == true || ans.equals("Delete") == true)
 		{
 			/**
 			DROP TABLE Twitter;
