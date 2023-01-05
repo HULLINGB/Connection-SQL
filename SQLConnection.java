@@ -45,7 +45,7 @@ public class SQLConnection{
 			System.out.println("Please enter the name of the table");
 			input1 = new Scanner(System.in);
 			table = input1.nextLine();
-			System.out.println("Please enter the names of the four rows");
+			System.out.println("Please enter the names of the five rows");
 			input2 = new Scanner(System.in);
 			row1 = input2.nextLine();
 			input2 = new Scanner(System.in);
@@ -59,7 +59,7 @@ public class SQLConnection{
 			 
 			/**
 			CREATE TABLE Twitter(
-			FirstName Number(20), 
+			FirstName VarChar2(20), 
 			UserName VarChar2(20), 
 			Location VarChar(20),
 			Bio VarChar2(300),
