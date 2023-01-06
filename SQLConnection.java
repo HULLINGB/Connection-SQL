@@ -7,8 +7,8 @@ import java.util.Scanner;
 import java.util.Date;  
 import java.text.SimpleDateFormat;  
 
+
 public class SQLConnection{
-	
 	
 	
 	public static void main(String[] args)
@@ -25,6 +25,10 @@ public class SQLConnection{
 		String row3 = "";
 		String row4 = "";
 		String row5 = "";
+		ResultSet result;
+		ResultSet result2;
+		Integer length = new Integer(11);
+		int length2 = 0;
 		Scanner input1 = new Scanner(System.in);
 		Scanner input2 = new Scanner(System.in);
 		Scanner myObj = new Scanner(System.in);
@@ -35,12 +39,20 @@ public class SQLConnection{
 		Class.forName("com.mysql.jdbc.Driver");  
 		Connection connection = DriverManager.getConnection(  
 				"jdbc:mysql://localhost:3306/Twitter","root","root");    
-		//long length = SQLCOUNT();
 		Statement database = connection.createStatement();
+		result2 = database.execute("SELECT COUNT(*) FROM Twitter");
+		}catch(SQLException e)
+		{
+		}
+		try{
+			while(result2.next())
+			{
+			length = result2.getInt(1);
+			}
 		}catch(Exception e)
 		{
-			
 		}
+		length2 = length;
 		System.out.println("Do you want to create a new table?");
 		Scanner input = new Scanner(System.in);
 		String ans = input.nextLine();
@@ -60,7 +72,6 @@ public class SQLConnection{
 			row4 = input2.nextLine();
 			input2 = new Scanner(System.in);
 			row5 = input2.nextLine();
-			 
 			/**
 			CREATE TABLE Twitter(
 			FirstName VarChar2(20), 
@@ -139,7 +150,6 @@ public class SQLConnection{
 			input2 = new Scanner(System.in);
 			answer = input2.nextLine();
 	
-			ResultSet result;
 			try{
 			result = database.executeQuery("SELECT " + firstSQL + " FROM " + table + " WHERE " + secondSQL + " = " + answer);
 			}catch(SQLException e)
@@ -151,6 +161,10 @@ public class SQLConnection{
 				System.out.println(result.absolute(a));
 				a++;
 			}
+		}
+		if(ans.equals("Count") == true || ans.equals("count") == true)
+		{
+			System.out.println("The table has " + length2 + " entries");
 		}
 		if(ans.equals("delete") == true || ans.equals("Delete") == true)
 		{
