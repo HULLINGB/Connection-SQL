@@ -81,7 +81,7 @@ public class SQLConnection{
 			StartDate VarChar2(20));
 			**/
 			try{
-			database.executeUpdate("CREATE TABLE " + table + " (" + row1 + " VarChar2(20)," + row2 + " VarChar2(20)," + row3 + " VarChar(20)," + row4 + " VarChar(300)," + row5 + " VarChar(20))");
+			database.execute("CREATE TABLE " + table + " (" + row1 + " VarChar2(20)," + row2 + " VarChar2(20)," + row3 + " VarChar(20)," + row4 + " VarChar(300)," + row5 + " VarChar(20))");
 			}catch(SQLException e)
 			{
 			}
@@ -125,7 +125,7 @@ public class SQLConnection{
 		VALUES ('Brad', 'bradhullinger', 'Denver', 'Ilovetosnowboardandplaythedrumsandprogramcomputers', '01012023');
 		**/
 		try{
-		database.executeUpdate("INSERT INTO " + table + " (" + row1 + ", " row2 + ", " + row3 + ", " + row4 + ", " + row5 + ") VALUES (" + "'" + name + "'" + ", " + "'" + account + "'" + ", " + "'" + location + "'" + ", " + "'" + bio + "'" + ", " + "'" + date + "'" + ")");
+		database.execute("INSERT INTO " + table + " (" + row1 + ", " row2 + ", " + row3 + ", " + row4 + ", " + row5 + ") VALUES (" + "'" + name + "'" + ", " + "'" + account + "'" + ", " + "'" + location + "'" + ", " + "'" + bio + "'" + ", " + "'" + date + "'" + ")");
 		}catch(SQLException e)
 		{
 		}
@@ -175,7 +175,7 @@ public class SQLConnection{
 			input1 = new Scanner(System.in);
 			table = input1.nextLine();
 			try{
-			database.executeUpdate("DROP TABLE " + table);
+			database.execute("DROP TABLE " + table);
 			}catch(SQLException e)
 			{
 			}
