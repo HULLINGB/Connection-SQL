@@ -31,12 +31,16 @@ public class SQLConnection{
 		String firstSQL = "";
 		String secondSQL = "";
 		String answer = "";
-		
+		try{
 		Class.forName("com.mysql.jdbc.Driver");  
 		Connection connection = DriverManager.getConnection(  
 				"jdbc:mysql://localhost:3306/Twitter","root","root");    
 		//long length = SQLCOUNT();
 		Statement database = connection.createStatement();
+		}catch(Exception e)
+		{
+			
+		}
 		System.out.println("Do you want to create a new table?");
 		Scanner input = new Scanner(System.in);
 		String ans = input.nextLine();
@@ -65,7 +69,11 @@ public class SQLConnection{
 			Bio VarChar2(300),
 			StartDate VarChar2(20));
 			**/
+			try{
 			database.executeUpdate("CREATE TABLE " + table + " (" + row1 + " VarChar2(20)," + row2 + " VarChar2(20)," + row3 + " VarChar(20)," + row4 + " VarChar(300)," + row5 + " VarChar(20))");
+			}catch(SQLException e)
+			{
+			}
 		}
 		System.out.println("What would you like to do?");
 		input = new Scanner(System.in);
@@ -105,8 +113,11 @@ public class SQLConnection{
 		INSERT INTO Twitter (FirstName, UserName, Location, Bio, StartDate)
 		VALUES ('Brad', 'bradhullinger', 'Denver', 'Ilovetosnowboardandplaythedrumsandprogramcomputers', '01012023');
 		**/
+		try{
 		database.executeUpdate("INSERT INTO " + table + " (" + row1 + ", " row2 + ", " + row3 + ", " + row4 + ", " + row5 + ") values (" + "'" + name + "'" + ", " + "'" + account + "'" + ", " + "'" + location + "'" + ", " + "'" + bio + "'" + ", " + "'" + date + "'" + ")");
-			
+		}catch(SQLException e)
+		{
+		}
 		}
 		if(ans.equals("Search") == true || ans.equals("search") == true)
 		{
@@ -129,7 +140,11 @@ public class SQLConnection{
 			answer = input2.nextLine();
 	
 			ResultSet result;
+			try{
 			result = database.executeQuery("SELECT " + firstSQL + " FROM " + table + " WHERE " + secondSQL + " = " + answer);
+			}catch(SQLException e)
+			{
+			}
 			int a = 0;
 			while(result.next())
 			{
@@ -145,7 +160,11 @@ public class SQLConnection{
 			System.out.println("Please enter the name of the table");
 			input1 = new Scanner(System.in);
 			table = input1.nextLine();
+			try{
 			database.executeUpdate("DROP TABLE " + table);
+			}catch(SQLException e)
+			{
+			}
 		}
 	}
 }
