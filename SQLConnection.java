@@ -120,12 +120,14 @@ public class SQLConnection{
 		bio = myObj3.nextLine();
 		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");  
 		Date date = new Date(); 
+		String date2 = formatter.format(date);
+		
 		/**
 		INSERT INTO Twitter (FirstName, UserName, Location, Bio, StartDate)
 		VALUES ('Brad', 'bradhullinger', 'Denver', 'Ilovetosnowboardandplaythedrumsandprogramcomputers', '01012023');
 		**/
 		try{
-		database.execute("INSERT INTO " + table + " (" + row1 + ", " row2 + ", " + row3 + ", " + row4 + ", " + row5 + ") VALUES (" + "'" + name + "'" + ", " + "'" + account + "'" + ", " + "'" + location + "'" + ", " + "'" + bio + "'" + ", " + "'" + date + "'" + ")");
+		database.execute("INSERT INTO " + table + " (" + row1 + ", " row2 + ", " + row3 + ", " + row4 + ", " + row5 + ") VALUES (" + "'" + name + "'" + ", " + "'" + account + "'" + ", " + "'" + location + "'" + ", " + "'" + bio + "'" + ", " + "'" + date2 + "'" + ")");
 		}catch(SQLException e)
 		{
 		}
