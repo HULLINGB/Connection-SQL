@@ -10,7 +10,8 @@ import java.text.SimpleDateFormat;
 
 public class SQLConnection{
 	
-	
+	Connection connection;
+	Statement database;
 	public static void main(String[] args)
 	{
 		
@@ -37,9 +38,9 @@ public class SQLConnection{
 		String answer = "";
 		try{
 		Class.forName("com.mysql.jdbc.Driver");  
-		Connection connection = DriverManager.getConnection(  
+		connection = DriverManager.getConnection(  
 				"jdbc:mysql://localhost:3306/Twitter","root","root");    
-		Statement database = connection.createStatement();
+		database = connection.createStatement();
 		result2 = database.execute("SELECT COUNT(*) FROM Twitter");
 		}catch(SQLException e)
 		{
@@ -81,7 +82,7 @@ public class SQLConnection{
 			StartDate VarChar2(20));
 			**/
 			try{
-			database.execute("CREATE TABLE " + table + " (" + row1 + " VarChar2(20)," + row2 + " VarChar2(20)," + row3 + " VarChar(20)," + row4 + " VarChar(300)," + row5 + " VarChar(20))");
+			database.execute("CREATE TABLE " + table + " (" + row1 + " VarChar2(20), " + row2 + " VarChar2(20), " + row3 + " VarChar(20), " + row4 + " VarChar(300), " + row5 + " VarChar(20))");
 			}catch(SQLException e)
 			{
 			}
@@ -153,7 +154,7 @@ public class SQLConnection{
 			answer = input2.nextLine();
 	
 			try{
-			result = database.executeQuery("SELECT " + firstSQL + " FROM " + table + " WHERE " + secondSQL + " = " + answer);
+			result = database.executeQuery("SELECT " + firstSQL + " FROM " + table + " WHERE " + secondSQL + " = " + "'" + answer + "'");
 			}catch(SQLException e)
 			{
 			}
