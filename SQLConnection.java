@@ -12,6 +12,9 @@ public class SQLConnection{
 	
 	Connection connection;
 	Statement database;
+	String statement = "";
+	PreparedStatement preparedStatement;
+	ResultSet resultSet;
 	public static void main(String[] args)
 	{
 		
@@ -154,7 +157,14 @@ public class SQLConnection{
 			answer = input2.nextLine();
 	
 			try{
-			result = database.executeQuery("SELECT " + firstSQL + " FROM " + table + " WHERE " + secondSQL + " = " + "'" + answer + "'");
+
+			statement = database.executeQuery("SELECT " + firstSQL + " FROM " + table + " WHERE " + secondSQL + " = " + "'" + answer + "'");
+			preparedStatement = connection.prepareStatement(statement);
+            preparedStatement.setString(1, "%" + input + "%");
+
+            // Execute the query and retrieve the results
+            resultSet = preparedStatement.executeQuery();
+
 			}catch(SQLException e)
 			{
 			}
