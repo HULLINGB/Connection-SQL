@@ -8,10 +8,13 @@ import java.util.Date;
 import java.text.SimpleDateFormat;  
 
 
-public class SQLConnection{
+public class SQLConnection2{
 	
 	Connection connection;
 	Statement database;
+	String statement = "";
+	PreparedStatement preparedStatement;
+	ResultSet resultSet;
 	public static void main(String[] args)
 	{
 		
@@ -154,7 +157,13 @@ public class SQLConnection{
 			answer = input2.nextLine();
 	
 			try{
-			result = database.executeQuery("SELECT " + firstSQL + " FROM " + table + " WHERE " + secondSQL + " = " + "'" + answer + "'");
+
+			statement = "SELECT " + firstSQL + " FROM " + table + " WHERE " + secondSQL + " = ?";
+			preparedStatement = connection.prepareStatement(statement);
+            preparedStatement.setString(1, "%" + answer + "%");
+            // Execute the query and retrieve the results
+            resultSet = preparedStatement.executeQuery();
+
 			}catch(SQLException e)
 			{
 			}
