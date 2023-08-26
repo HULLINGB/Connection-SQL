@@ -158,9 +158,12 @@ public class SQLConnection2{
 	
 			try{
 
-			statement = "SELECT " + firstSQL + " FROM " + table + " WHERE " + secondSQL + " = ?";
+			statement = "SELECT ? FROM ? WHERE ? = ?";
 			preparedStatement = connection.prepareStatement(statement);
-            preparedStatement.setString(1, "%" + answer + "%");
+			preparedStatement.setString(1, "%" + firstSQL + "%");
+            preparedStatement.setString(2, "%" + table + "%");
+            preparedStatement.setString(3, "%" + secondSQL + "%");
+            preparedStatement.setString(4, "%" + answer + "%");
             // Execute the query and retrieve the results
             resultSet = preparedStatement.executeQuery();
 
