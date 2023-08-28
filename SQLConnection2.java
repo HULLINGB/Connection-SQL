@@ -7,7 +7,7 @@ import java.util.Scanner;
 import java.util.Date;  
 import java.text.SimpleDateFormat;  
 
-
+//Inputs are protected against SQL injection.
 public class SQLConnection2{
 	
 	Connection connection;
@@ -15,10 +15,10 @@ public class SQLConnection2{
 	String statement = "";
 	PreparedStatement preparedStatement;
 	ResultSet resultSet;
-	public static void main(String[] args)
-	{
-		
-		String table = "";
+	Scanner input1;
+	Scanner input2;
+	Scanner myObj;
+	String table = "";
 		String account = "";
 		String name = "";
 		String start = "";
@@ -33,12 +33,12 @@ public class SQLConnection2{
 		ResultSet result2;
 		Integer length = new Integer(11);
 		int length2 = 0;
-		Scanner input1 = new Scanner(System.in);
-		Scanner input2 = new Scanner(System.in);
-		Scanner myObj = new Scanner(System.in);
 		String firstSQL = "";
 		String secondSQL = "";
 		String answer = "";
+	public static void main(String[] args)
+	{
+				
 		try{
 		Class.forName("com.mysql.jdbc.Driver");  
 		connection = DriverManager.getConnection(  
@@ -131,7 +131,32 @@ public class SQLConnection2{
 		VALUES ('Brad', 'bradhullinger', 'Denver', 'Ilovetosnowboardandplaythedrumsandprogramcomputers', '01012023');
 		**/
 		try{
-		database.execute("INSERT INTO " + table + " (" + row1 + ", " row2 + ", " + row3 + ", " + row4 + ", " + row5 + ") VALUES (" + "'" + name + "'" + ", " + "'" + account + "'" + ", " + "'" + location + "'" + ", " + "'" + bio + "'" + ", " + "'" + date2 + "'" + ")");
+		// Declare variables outside the try/catch block
+		String sql = "INSERT INTO " + table + " (" + row1 + ", " + row2 + ", " + row3 + ", " + row4 + ", " + row5 + ") VALUES (?, ?, ?, ?, ?)";
+		PreparedStatement preparedStatement = null;
+
+		try {
+		    preparedStatement = database.prepareStatement(sql);
+		    preparedStatement.setString(1, name);
+		    preparedStatement.setString(2, account);
+		    preparedStatement.setString(3, location);
+		    preparedStatement.setString(4, bio);
+		    preparedStatement.setString(5, date2);
+
+		    int rowsAffected = preparedStatement.executeUpdate();
+
+		    // Check the value of rowsAffected to confirm the insertion was successful
+		} catch (SQLException e) {
+		    e.printStackTrace();
+		} finally {
+		    try {
+		        if (preparedStatement != null) {
+		            preparedStatement.close();
+		        }
+		    } catch (SQLException e) {
+		        e.printStackTrace();
+		    }
+		}
 		}catch(SQLException e)
 		{
 		}
