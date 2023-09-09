@@ -128,7 +128,7 @@ public class SQLConnection{
 		VALUES ('Brad', 'bradhullinger', 'Denver', 'Ilovetosnowboardandplaythedrumsandprogramcomputers', '01012023');
 		**/
 		try{
-		database.execute("INSERT INTO " + table + " (" + row1 + ", " row2 + ", " + row3 + ", " + row4 + ", " + row5 + ") VALUES (" + "'" + name + "'" + ", " + "'" + account + "'" + ", " + "'" + location + "'" + ", " + "'" + bio + "'" + ", " + "'" + date2 + "'" + ")");
+		database.execute("INSERT INTO " + table + " (" + row1 + ", " + row2 + ", " + row3 + ", " + row4 + ", " + row5 + ") VALUES (" + "'" + name + "'" + ", " + "'" + account + "'" + ", " + "'" + location + "'" + ", " + "'" + bio + "'" + ", " + "'" + date2 + "'" + ")");
 		}catch(SQLException e)
 		{
 		}
